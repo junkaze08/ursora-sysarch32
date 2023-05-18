@@ -7,7 +7,7 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash2.png",
+      "image": "./assets/honkaisplash.jpg",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
