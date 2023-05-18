@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, Image, StyleSheet } from 'react-native';
 
 const HomeScreen = ({ navigation }) => {
   const handleRegisterPress = () => {
@@ -11,10 +11,24 @@ const HomeScreen = ({ navigation }) => {
   };
 
   return (
-    <View>
-      <Text>Home Screen</Text>
+    <View style={styles.container}>
+      <Image source={require('./assets/honkaisplash4.png')} style={styles.logo} />
+      <Text>Welcome to my App</Text>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  logo: {
+    width: 200,
+    height: 200,
+    marginBottom: 20,
+  },
+});
 
 export default HomeScreen;
