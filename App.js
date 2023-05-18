@@ -1,20 +1,45 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import HomeScreen from './HomeScreen';
+import RegisterScreen from './RegisterScreen';
+import LoginScreen from './LoginScreen';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
-export default function App() {
+const Tab = createBottomTabNavigator();
+
+const TabIcon = ({ name, color, size }) => (
+  <Icon name={name} color={color} size={size} />
+);
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+    <NavigationContainer>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ color, size }) => {
+            let iconName;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+            if (route.name === 'Home') {
+              iconName = 'home';
+            } else if (route.name === 'Register') {
+              iconName = 'user-plus';
+            } else if (route.name === 'Login') {
+              iconName = 'sign-in';
+            }
+
+            // Return the custom TabIcon component
+            return <TabIcon name={iconName} color={color} size={size} />;
+          },
+        })}
+      >
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Register" component={RegisterScreen} />
+        <Tab.Screen name="Login" component={LoginScreen} />
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
+};
+
+
+export default App;
